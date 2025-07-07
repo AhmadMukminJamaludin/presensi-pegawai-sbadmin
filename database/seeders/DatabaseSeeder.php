@@ -16,20 +16,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $bagianSales = Bagian::create(['nama_bagian' => 'Sales']);
-        $bagianService = Bagian::create(['nama_bagian' => 'Service']);
-        $bagianGudang = Bagian::create(['nama_bagian' => 'Gudang']);
+        // $bagianSales = Bagian::create(['nama_bagian' => 'Sales']);
+        // $bagianService = Bagian::create(['nama_bagian' => 'Service']);
+        // $bagianGudang = Bagian::create(['nama_bagian' => 'Gudang']);
 
-        Role::create(['name' => 'admin', 'guard_name' => 'web']);
-        Role::create(['name' => 'pegawai', 'guard_name' => 'web']);
+        // Role::create(['name' => 'admin', 'guard_name' => 'web']);
+        // Role::create(['name' => 'pegawai', 'guard_name' => 'web']);
 
-        $admin = Pegawai::create([
-            'nip' => 'TK0001',
-            'nama' => 'Admin Toko',
-            'email' => 'admin@toko.test',
+        // $admin = Pegawai::create([
+        //     'nip' => 'TK0001',
+        //     'nama' => 'Admin Toko',
+        //     'email' => 'admin@toko.test',
+        //     'password' => bcrypt('password'),
+        //     'bagian_id' => $bagianSales->id,
+        // ]);
+
+        $pegawai = Pegawai::create([
+            'nip' => 'TK0002',
+            'nama' => 'Pegawai Toko',
+            'email' => 'pegawai@toko.test',
             'password' => bcrypt('password'),
-            'bagian_id' => $bagianSales->id,
+            'bagian_id' => 10,
         ]);
-        $admin->assignRole('admin');
+        $pegawai->assignRole('pegawai');
     }
 }
