@@ -26,7 +26,13 @@
                     @endforeach
                 </select>
             </div>
-            <button class="btn btn-primary">Tampilkan</button>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-primary mr-2">Tampilkan</button>
+                <a href="{{ route('laporan.export', ['year'=>$year,'month'=>$month]) }}"
+                    class="btn btn-success">
+                    <i class="fas fa-file-excel"></i> Cetak Excel
+                </a>
+            </div>
         </form>
 
         {{-- Nav Tabs --}}
@@ -37,9 +43,9 @@
             <li class="nav-item">
                 <a class="nav-link" id="rekap-tab" data-toggle="tab" href="#rekap" role="tab">Rekap Bulanan</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" id="matrix-tab" data-toggle="tab" href="#matrix" role="tab">Matriks Presensi</a>
-            </li>
+            </li> --}}
         </ul>
 
         <div class="tab-content" id="laporanTabContent">

@@ -24,6 +24,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('pengaturan', PengaturanController::class)
         ->only(['index', 'edit', 'update']);
+    Route::get('laporan/export', [LaporanController::class, 'export'])
+        ->name('laporan.export')
+        ->middleware(['auth', 'role:admin']);
 });
 
 Route::middleware(['auth', 'role:pegawai|admin'])->group(function () {

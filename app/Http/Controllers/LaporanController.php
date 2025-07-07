@@ -9,6 +9,8 @@ use App\Models\PresensiHarian;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use App\Exports\LaporanPresensiExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanController extends Controller
 {
@@ -60,5 +62,17 @@ class LaporanController extends Controller
             'year'              => $year,
             'month'             => $month,
         ]);
+    }
+
+    public function export(Request $request)
+    {
+        $year  = $request->input('year', now()->year);
+        $month = $request->input('month', now()->month);
+
+        $filename = "laporan_presensi_{$year}_{$month}.xlsx";
+        return Excel::download(
+            new LaporanPresensiExport($year, $month),
+            $filename
+        );
     }
 }
